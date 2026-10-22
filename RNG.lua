@@ -3,7 +3,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 --[[
 RNG - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
-Ranged: Preshot | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first) -> TH.
+Ranged: Preshot (commented out, see the set) | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first) -> TH.
 Engaged at night (18:00-06:00): Tp_Night on top of your TP set.
 WS: Ws_Default -> Ws_<Mode> -> Ws_SlugShot / Ws_Detonator / Ws_Trueflight (+ Korin Obi when day/weather help)... Ranged WS skip the distance check.
 Double Shot (level 79) and Aeolian Edge (290 skill) were removed.
@@ -73,8 +73,13 @@ local sets = {
     Nuke = {
     },
 
-    Preshot = {
-    },
+    -- Preshot is worn when /ra starts, so only Snapshot (shorter delay) and Rapid Shot (RNG trait, instant shot chance) matter here.
+    -- Most players didn't bother with a preshot set in era: the gains are small and few pieces exist at 75.
+    -- Uncomment to use it.
+    -- Preshot_Priority = {
+    --     Head = {'Htr. Beret +1', 'Hunter\'s Beret'},  -- Rapid Shot +5
+    --     Body = {'Sct. Jerkin +1', 'Scout\'s Jerkin'}, -- Rapid Shot +5
+    -- },
     Midshot = {
     },
     Barrage_Priority = {
