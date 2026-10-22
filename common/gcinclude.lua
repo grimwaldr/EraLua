@@ -8,7 +8,7 @@ Anything in settings can be overridden per job, either in gcinclude.SetupJob's S
 option or in OnLoad, for example:
     gcinclude.settings.RefreshGearMPP = 50;
 
-Avoid main/sub/range/ammo in the shared sets.
+Avoid main/sub/range/ammo in the shared sets. A slot can be a list ({'HQ', 'NQ'}): the first one you own is used.
 ]]
 gcinclude.sets = T{
     Sleeping = {     -- equipped while asleep
@@ -19,7 +19,17 @@ gcinclude.sets = T{
         Body = 'Tanner\'s Apron',
         Hands = 'Tanner\'s Gloves',
     },
-    Fishing = {      -- /fishset
+    Fishing = {      -- /fishset, and automatically while a fishing rod is in the Range slot
+        Body = {'Angler\'s Tunica', 'Fsh. Tunica'},
+        Hands = {'Angler\'s Gloves', 'Fsh. Gloves'},
+        Legs = {'Angler\'s Hose', 'Fisherman\'s Hose'},
+        Feet = {'Waders', 'Angler\'s Boots', 'Fisherman\'s Boots'},
+    },
+    Helm = {         -- /helmset (harvesting, excavation, logging, mining)
+        Body = {'Worker Tunica', 'Field Tunica'},
+        Hands = {'Worker Gloves', 'Field Gloves'},
+        Legs = {'Worker Hose', 'Field Hose'},
+        Feet = {'Worker Boots', 'Field Boots'},
     },
 };
 
@@ -141,6 +151,7 @@ gcinclude.BuffId = { Sneak = 71, Invisible = 69, Stoneskin = 37, Blink = 36, Deo
 
 gcinclude.CraftSet = false;
 gcinclude.FishSet = false;
+gcinclude.HelmSet = false;
 gcinclude.RRSet = false;
 gcinclude.CORmsg = true;
 gcinclude.LastUtsu = nil;   -- 'Ichi' or 'Ni', the last Utsusemi you started casting
@@ -225,6 +236,24 @@ function gcinclude.FirstOwned(list)
         if gcinclude.HaveItem(name) then return name end
     end
     return nil;
+end
+
+-- Equip one of the shared sets above, resolving {'HQ', 'NQ'} lists to the first one you own.
+function gcinclude.EquipShared(set)
+    local resolved = {};
+    for slot, value in pairs(set or {}) do
+        if type(value) == 'table' then value = gcinclude.FirstOwned(value) end
+        if value ~= nil then resolved[slot] = value end
+    end
+    if next(resolved) ~= nil then gFunc.EquipSet(resolved) end
+end
+
+-- True while a fishing rod (Fishing skill item) is in the Range slot.
+function gcinclude.HoldingRod()
+    local range = gData.GetEquipment().Range;
+    if range == nil or range.Name == nil then return false end
+    local res = AshitaCore:GetResourceManager():GetItemByName(range.Name, 0);
+    return res ~= nil and res.Skill == 48;
 end
 
 ---------------------------------------------------------------------------
@@ -325,6 +354,10 @@ local function SetupCommonCommands()
     gcinclude.AddCommand('fishset', function()
         gcinclude.FishSet = not gcinclude.FishSet;
         gcinclude.StatusMessage('Fishing Set', gcinclude.FishSet);
+    end);
+    gcinclude.AddCommand('helmset', function()
+        gcinclude.HelmSet = not gcinclude.HelmSet;
+        gcinclude.StatusMessage('HELM Set', gcinclude.HelmSet);
     end);
     gcinclude.AddCommand('rrset', function()
         gcinclude.RRSet = not gcinclude.RRSet;
@@ -467,7 +500,7 @@ end
 --[[
 Runs at the end of every idle/TP update (gcinclude.DoDefault calls it).
 Order: auto regen/refresh/DT, DT toggle, movement, town and aketon, debuff sets,
-craft/fish/reraise toggles, locking rings.
+craft/fish/HELM/reraise toggles, locking rings.
 ]]
 function gcinclude.CheckDefault()
     local player = gData.GetPlayer();
@@ -485,9 +518,18 @@ function gcinclude.CheckDefault()
     end
     if player.Status ~= 'Engaged' then gcinclude.SetTownGear() end
     gcinclude.CheckCommonDebuffs();
-    if gcinclude.CraftSet then gFunc.EquipSet(gcinclude.sets.Crafting) end
-    if gcinclude.FishSet then gFunc.EquipSet(gcinclude.sets.Fishing) end
-    if gcinclude.RRSet then gFunc.EquipSet(gcinclude.sets.Reraise) end
+    if gcinclude.CraftSet then gcinclude.EquipShared(gcinclude.sets.Crafting) end
+    if gcinclude.HelmSet then gcinclude.EquipShared(gcinclude.sets.Helm) end
+    if gcinclude.FishSet or gcinclude.HoldingRod() then
+        gcinclude.EquipShared(gcinclude.sets.Fishing);
+        -- Keep the rod and bait on over job sets that use Range/Ammo (BRD instruments, RNG/COR guns)
+        local equip = gData.GetEquipment();
+        if gcinclude.HoldingRod() then
+            gFunc.Equip('Range', equip.Range.Name);
+            if equip.Ammo ~= nil and equip.Ammo.Name ~= nil then gFunc.Equip('Ammo', equip.Ammo.Name) end
+        end
+    end
+    if gcinclude.RRSet then gcinclude.EquipShared(gcinclude.sets.Reraise) end
     gcinclude.CheckLockingRings();
     CheckSubJobBinds();
     gcdisplay.Update();

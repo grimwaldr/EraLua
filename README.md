@@ -60,7 +60,9 @@ These are the same on every job:
 
 ## Common commands
 
-`/dt` `/meleeset` `/nukeset` `/setcycle <cycle> <value>` `/wsdistance` `/gcmessages` `/gckeys` `/gcdisplay` `/craftset` `/fishset` `/rrset`
+`/dt` `/meleeset` `/nukeset` `/setcycle <cycle> <value>` `/wsdistance` `/gcmessages` `/gckeys` `/gcdisplay` `/craftset` `/fishset` `/helmset` `/rrset`
+
+Holding a fishing rod in the Range slot equips the Fishing set automatically (rod and bait stay on). `/fishset` and `/helmset` force those sets on; each slot uses the HQ piece first, then NQ.
 
 Job commands are listed in the comment at the top of each job file.
 
