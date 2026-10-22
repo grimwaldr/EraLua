@@ -12,7 +12,7 @@ Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdi
 
 local sets = {
     Idle_Priority = { --pdt/mdt set with some hp
-        Main = 'Earth Staff',
+        Main = {'Terra\'s Staff', 'Earth Staff'},
 		Range = 'Ungur Boomerang',
         Head = 'Arhat\'s jinpachi',
         Neck = 'Fortitude Torque',
@@ -50,7 +50,7 @@ local sets = {
     Precast = {
     },
     Utsusemi_Priority = {
-        Main = 'Earth Staff',
+        Main = {'Terra\'s Staff', 'Earth Staff'},
 		Range = 'Ungur Boomerang',
         Head = 'Panther mask',
         Neck = 'Fortitude Torque',
