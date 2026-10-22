@@ -6,7 +6,7 @@ COR - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Rolls: Roll (+ a set named after the roll on top) and a Lucky/Unlucky chat line (/cormsg turns it off).
 Quick Draw: QuickDraw -> QuickDraw_Acc (/meleeset Acc, and always for Light Shot / Dark Shot) -> obi when day/weather help.
 Wild Card, Fold, Random Deal, Snake Eye use sets named after them. /tpgun keeps Idle_TPgun on while idle.
-Ranged: Preshot (-> Preshot_FlurryI / Preshot_FlurryII) | Midshot -> Midshot_Acc. Movement: Blood Cuisses, else Crimson Cuisses.
+Ranged: Preshot | Midshot -> Midshot_Acc. Movement: Blood Cuisses, else Crimson Cuisses.
 WS: Ws_SlugShot, Ws_Detonator, Ws_LeadenSalute (+ Anrin Obi when day/weather help). Triple Shot (level 87) was removed.
 Commands: /tpgun /cormsg /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
@@ -105,12 +105,7 @@ local sets = {
     Enfeebling = {
     },
 
-    Preshot = {--base preshot, no flurry, 70cap, 10 from gifts (only 1200 JP needed)
-        -- Legs = 'Ikenga\'s Trousers',--8
-    },
-    Preshot_FlurryI = {--with flurry I on, gives 15
-    },
-    Preshot_FlurryII = {--with flurry II on, gives 30
+    Preshot = {
     },
     Midshot = {
     },

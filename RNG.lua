@@ -3,7 +3,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 --[[
 RNG - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
-Ranged: Preshot (-> Preshot_FlurryI / Preshot_FlurryII) | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first) -> TH.
+Ranged: Preshot | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first) -> TH.
 Engaged at night (18:00-06:00): Tp_Night on top of your TP set.
 WS: Ws_Default -> Ws_<Mode> -> Ws_SlugShot / Ws_Detonator / Ws_Trueflight (+ Korin Obi when day/weather help)... Ranged WS skip the distance check.
 Double Shot (level 79) and Aeolian Edge (290 skill) were removed.
@@ -73,11 +73,7 @@ local sets = {
     Nuke = {
     },
 
-    Preshot = {--base preshot, no flurry, 70cap, 10 from gifts
-    },
-    Preshot_FlurryI = {--with flurry I on, gives 15, 10 from gifts
-    },
-    Preshot_FlurryII = {--with flurry II on, gives 30, 10 from gifts
+    Preshot = {
     },
     Midshot = {
     },

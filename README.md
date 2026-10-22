@@ -32,7 +32,7 @@ Sets are looked up by name. A missing or empty set is skipped, so a job file onl
 | Precast | `Precast` -> `<Skill>_Precast` -> `<Spell>_Precast` |
 | Midcast | `<Skill>` -> `<Skill>_<Mode>` -> `Self_<Skill>` -> `Haste` (Utsusemi, Blink, Aquaveil) -> last word -> family -> exact -> `Self_<Spell>` -> staff / obi -> job hook -> `TH` |
 | WS | `Ws_Default` -> `Ws_<Mode>` -> job hook -> `Ws_<WsName>` -> `Ws_<WsName>_<Mode>` |
-| Ranged | `Preshot` (`Preshot_FlurryI/II`) / `Midshot` -> `Midshot_<Mode>` -> `Barrage` -> `TH` |
+| Ranged | `Preshot` / `Midshot` -> `Midshot_<Mode>` -> `Barrage` -> `TH` |
 
 Skill set names: `Cure`, `Enhancing`, `Enfeebling`, `Nuke`, `Dark`, `Divine`, `Ninjutsu`, `Blue`, `Summon`. Songs use `Song_Buff` / `Song_Debuff`, then `Song_<Type>`.
 
@@ -94,6 +94,7 @@ Everything was checked against the [Phoenix server repo](https://github.com/phoe
 - **Gear:** every entry was audited against `sql/item_equipment.sql` and `modules/phoenix/sql/pxi_item_equipment.sql`. Anything above level 75, unwearable by the job on Phoenix, or not a Phoenix item was removed. Long item names were changed to the short names LuAshitacast matches (`Bugard Strap +1`, not `Bugard Leather Strap +1`).
 - **Weapon skills:** `sql/weapon_skills.sql`. Quest, relic and mythic WS are era (Leaden Salute, Trueflight, Atonement, Expiacion stay). Empyrean and later, or anything needing skill above the 75 cap, is out.
 - **Abilities:** `sql/abilities.sql`. Anything above level 75 is out (Double Shot, Triple Shot, Blood Rage, Impetus...).
+- **Flurry:** added in 2014, so there are no Flurry preshot sets.
 - **Utsusemi:** a cast only lands over shadows of the same or lower tier (`scripts/globals/spells/enhancing_ninjutsu.lua`), so only Ichi over Ni needs a cancel. Cancelling before Ni could leave you with no shadows if Ni was interrupted.
 - **Sneak / Invisible:** random 30-300s base duration plus gear bonuses (`modules/phoenix/lua/globals/spells/enhancing_spell.lua`). Skulker's Cape is the only gear with the bonus, and items ignore gear entirely, so there is no swap for oils and powders. Silent Oil does nothing while Sneak is up (`modules/era/lua/items/pot_of_silent_oil.lua`), hence the cancel.
 - **Hasso:** the Zanshin bonus is removed in era (`modules/era/lua/globals/job_utils/samurai.lua`) and no gear at 75 enhances it, so WAR and DRK get /SAM binds but no Hasso set.

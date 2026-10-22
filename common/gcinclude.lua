@@ -674,7 +674,7 @@ MeleeSet value (TP/WS/abilities/ranged) or NukeSet value (spells), skipped when 
              and Song_<Type> (Song_March, Song_Lullaby, Song_HordeLullaby). NIN nukes also use Nuke.
   WS:        Ws_Default -> Ws_<Mode> -> profile.OnWsBase -> Ws_<WsName> -> Ws_<WsName>_<Mode> -> profile.OnWeaponskill
              (WsName = name without spaces/punctuation, e.g. Ws_BladeJin; profile.WsAlias maps several WS to one set)
-  Ranged:    Preshot (-> Preshot_FlurryI/II) | Midshot -> Midshot_<Mode> -> DoubleShot/TripleShot/Barrage -> TH
+  Ranged:    Preshot | Midshot -> Midshot_<Mode> -> Barrage -> TH
   Pet moves: profile.OnPetAction(petAction) runs instead of idle/TP while your pet is using a move.
 
 SetName() strips spaces and punctuation, Family() strips tiers (II, IV, : Ni), LastWord() is the last word of Family().
@@ -902,11 +902,6 @@ end
 
 function gcinclude.DoPreshot(profile)
     gcinclude.EquipIfExists('Preshot');
-    if gData.GetBuffCount(581) > 0 then
-        gcinclude.EquipIfExists('Preshot_FlurryII');
-    elseif gData.GetBuffCount(265) > 0 then
-        gcinclude.EquipIfExists('Preshot_FlurryI');
-    end
     if profile.OnPreshot ~= nil then profile.OnPreshot() end
 end
 
@@ -917,8 +912,6 @@ function gcinclude.DoMidshot(profile)
         gcinclude.EquipIfExists('Midshot_Acc');
         gcinclude.EquipIfExists('Barrage');
     end
-    if gData.GetBuffCount('Double Shot') > 0 then gcinclude.EquipIfExists('DoubleShot') end
-    if gData.GetBuffCount('Triple Shot') > 0 then gcinclude.EquipIfExists('TripleShot') end
     local ammo = gData.GetEquipment().Ammo;
     if ammo ~= nil and ammo.Name == 'Bloody Bolt' then gcinclude.EquipIfExists('Bloody_Bolt') end
     if profile.OnMidshot ~= nil then profile.OnMidshot(mode) end
