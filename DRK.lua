@@ -5,7 +5,6 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 DRK - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Dark magic: Dark -> Drain / Aspir / Absorb / DreadSpikes (by spell name) -> obi on matching day/weather.
 Dread Spikes up: Spikes set over idle/TP. Blood Weapon / Souleater / Last Resort / Weapon Bash use sets named after them.
-Aeolian Edge is out of era and was removed.
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

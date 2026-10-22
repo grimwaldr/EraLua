@@ -7,7 +7,6 @@ SCH - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Nukes: Nuke -> Nuke_Macc (/nukeset) -> Helix for helixes -> obi -> Mp_Body under 40% MP. Storms use Storm.
 Ebullience / Rapture up: Power. Sublimation charging: Sublimation.
 /elecycle picks the element for /nuke 1-4, /helix and /weather.
-Kaustra, Klimaform, Myrkr and Cataclysm are out of era and were removed.
 Commands: /weapon /elecycle /nuke # /helix /weather /nukeset /dt /setcycle /gckeys /gcdisplay
 ]]
 

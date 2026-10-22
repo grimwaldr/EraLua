@@ -5,7 +5,6 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 DNC - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Waltzes use Waltz (+ CuringWaltz, CuringWaltzIII... on top). Steps, Sambas, Jigs and Flourishes use Step, Samba, Jig, Flourish.
 Provoke and Animated Flourish also use Enmity. Spectral Jig cancels Sneak first so it doesn't fail.
-Aeolian Edge is out of era and was removed.
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

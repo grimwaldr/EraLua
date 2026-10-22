@@ -5,7 +5,6 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 DRG - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Jump, High Jump, Super Jump all use the Jump set (+ Jump_<Mode>); a set named SuperJump etc. goes on top.
 Wyvern breaths (Healing Breath etc.) equip the Breath set while the wyvern uses them.
-Aeolian Edge is out of era and was removed.
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

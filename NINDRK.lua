@@ -48,7 +48,7 @@ local sets = {
     },
     Tp_Acc = {
     },
-    Tp_Proc = { -- a set to force low dmg for things like Abyssea
+    Tp_Proc = { -- low damage, for Dynamis procs
     },
     Precast = {
     },
@@ -89,7 +89,7 @@ local sets = {
     },
     Ws_Acc = {
     },
-    Ws_Proc = { -- a set to force low dmg for things like Abyssea
+    Ws_Proc = { -- low damage, for Dynamis procs
     },
     Ws_BladeJin = {
     },

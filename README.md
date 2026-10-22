@@ -1,6 +1,6 @@
 # EraLua
 
-LuAshitacast profiles for Phoenix XI's 75 cap (ToAU era, plus the WotG content Phoenix is working toward). All 20 era jobs, plus a NIN/DRK variant, running on one shared common library.
+LuAshitacast profiles for Phoenix XI's 75 cap era, through Wings of the Goddess. All 20 jobs, plus a NIN/DRK variant, running on one shared common library.
 
 ## Install
 
@@ -89,22 +89,18 @@ return profile;
 
 Job-specific logic goes in hooks (`OnDefault`, `OnLast`, `OnAbility`, `OnMidcast`, `OnWsBase`, `OnCommand`, ...) rather than rewritten handlers.
 
-## How the era rules were decided
+## How mechanics were checked
 
-Everything was checked against the [Phoenix server repo](https://github.com/phoenixffxi/Phoenix), including its `modules/`, rather than wikis, since Phoenix changes a lot of retail behaviour back to how it was in era.
+Everything was checked against the [Phoenix server repo](https://github.com/phoenixffxi/Phoenix), including its `modules/`, rather than wikis.
 
-- **Gear:** every entry was audited against `sql/item_equipment.sql` and `modules/phoenix/sql/pxi_item_equipment.sql`. Anything above level 75, unwearable by the job on Phoenix, or not a Phoenix item was removed. Long item names were changed to the short names LuAshitacast matches (`Bugard Strap +1`, not `Bugard Leather Strap +1`).
-- **Weapon skills:** `sql/weapon_skills.sql`. Quest, relic and mythic WS are era (Leaden Salute, Trueflight, Atonement, Expiacion stay). Empyrean and later, or anything needing skill above the 75 cap, is out.
-- **Abilities:** `sql/abilities.sql`. Anything above level 75 is out (Double Shot, Triple Shot, Blood Rage, Impetus...).
-- **Flurry:** added in 2014, so there are no Flurry preshot sets.
-- **Preshot:** only Snapshot and Rapid Shot matter when `/ra` starts, and few pieces at 75 have either. Most players skipped a preshot set in era, so the RNG and COR ones are commented out with the era pieces listed.
+- **Gear:** every entry is checked against `sql/item_equipment.sql` and `modules/phoenix/sql/pxi_item_equipment.sql` for level and job, and uses the short name LuAshitacast matches (`Bugard Strap +1`, not `Bugard Leather Strap +1`).
+- **Weapon skills:** `sql/weapon_skills.sql`. Includes the quest, relic and mythic WS (Leaden Salute, Trueflight, Atonement, Expiacion).
+- **Preshot:** only Snapshot and Rapid Shot matter when `/ra` starts, and few pieces at 75 have either. Most players skip a preshot set, so the RNG and COR ones are commented out with the useful pieces listed.
 - **Utsusemi:** a cast only lands over shadows of the same or lower tier (`scripts/globals/spells/enhancing_ninjutsu.lua`), so only Ichi over Ni needs a cancel. Cancelling before Ni could leave you with no shadows if Ni was interrupted.
 - **Sneak / Invisible:** random 30-300s base duration plus gear bonuses (`modules/phoenix/lua/globals/spells/enhancing_spell.lua`). Skulker's Cape is the only gear with the bonus, and items ignore gear entirely, so there is no swap for oils and powders. Silent Oil does nothing while Sneak is up (`modules/era/lua/items/pot_of_silent_oil.lua`), hence the cancel.
-- **Hasso:** the Zanshin bonus is removed in era (`modules/era/lua/globals/job_utils/samurai.lua`) and no gear at 75 enhances it, so WAR and DRK get /SAM binds but no Hasso set.
+- **Hasso:** no gear at 75 enhances it (`modules/era/lua/globals/job_utils/samurai.lua`), so WAR and DRK get /SAM binds but no Hasso set.
 - **Song elements:** `sql/spell_list.sql`. Lullaby and Finale are Light, Elegy is Earth, and each Threnody carries its counter element (Ice Threnody is Fire), so the elemental staff lookup picks the right staff for each song.
 - **Minstrel's Ring / Earring:** `sql/item_latents.sql`. The ring needs 75% HP or less and under 100 TP when the song starts; the earring needs 25% HP or less and under 100 TP.
-- **Holy Water:** 33% Doom removal (`scripts/items/flask_of_holy_water.lua`). The only gear that improves it is level 96, so there is no Holy Water set.
-- **GEO and RUN** are out of era and have no profiles.
 
 ### Why one shared library
 

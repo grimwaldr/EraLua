@@ -1,7 +1,7 @@
 local gcinclude = T{};
 
 --[[
-Shared code for every job file. Built for Phoenix XI (75 cap, ToAU era).
+Shared code for every job file. Built for Phoenix XI (75 cap, through WotG).
 
 The two tables at the top (sets, settings) are the only parts meant to be edited by hand.
 Anything in settings can be overridden per job, either in gcinclude.SetupJob's Settings
@@ -107,7 +107,7 @@ gcinclude.ElementalWS = T{
     ['Flaming Arrow'] = 'Fire', ['Hot Shot'] = 'Fire', ['Trueflight'] = 'Light', ['Leaden Salute'] = 'Dark',
 };
 
--- Era rolls only: {name, lucky, unlucky}
+-- Rolls: {name, lucky, unlucky}
 gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s Roll',3,7}, {'Corsair\'s Roll',5,9}, {'Ninja Roll',4,8},
     {'Hunter\'s Roll',4,8}, {'Chaos Roll',4,8}, {'Magus\'s Roll',2,6}, {'Drachen Roll',4,8}, {'Choral Roll',2,6}, {'Beast Roll',4,8},
     {'Samurai Roll',2,6}, {'Evoker\'s Roll',5,9}, {'Rogue\'s Roll',5,9}, {'Warlock\'s Roll',4,8}, {'Puppet Roll',3,7}, {'Gallant\'s Roll',3,7},
@@ -638,7 +638,6 @@ end
 Call in HandleItem (DoItem does). Silent Oil does nothing if Sneak is already up (Phoenix item script),
 so Sneak is cancelled right before the oil goes off. Prism/Rainbow Powder replace Invisible
 on their own. Items do not use gear duration bonuses, so there is no gear to swap.
-Holy Water: 33% to remove Doom on Phoenix; the only gear that raises it (Blenmot's Ring) is level 96, so no set.
 ]]
 function gcinclude.CheckItem()
     local item = gData.GetAction();

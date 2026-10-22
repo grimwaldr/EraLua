@@ -2,7 +2,7 @@ local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 --[[
-BLM - Phoenix XI (75 cap). Same layout as RDM, on the shared common folder. RDM-only gear was removed.
+BLM - Phoenix XI (75 cap). Same layout as RDM, on the shared common folder.
 Sets ending in _Priority take a list per slot; the first item you own at your level is used.
 Cycles:  /battle  Support | Tank       (Tank: no TP set while engaged, Cure_Tank, enmity on Blind/Flash)
          /spell   Accuracy | Potency   (Nuke_*, INT_*, MND_* sets)

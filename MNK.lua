@@ -5,7 +5,6 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 MNK - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Abilities use a set named after them (Boost, Focus, Dodge, Chakra, Counterstance, Footwork, ChiBlast...).
 WS sets: Ws_Default -> Ws_<Mode> -> Ws_<WsName> (Ws_AsuranFists, Ws_DragonKick, Ws_HowlingFist...).
-Victory Smite, Shijin Spiral and Impetus are out of era and were removed.
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

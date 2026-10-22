@@ -6,7 +6,7 @@ PLD - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Every ability equips Enmity first, then a set named after it (Sentinel, Rampart, Cover, Fealty, Bash, Chivalry, Invincible).
 Engaged with /tankset on Main or MEVA: Tp_* then Tank_Main / Tank_MEVA. Cover buff up: Fealty set.
 Spells: SIR first; Cure, Phalanx, Reprisal, Flash use their own sets, everything else Enmity. /sir forces SIR on top (not Reprisal).
-Savage Blade and Knights of Round share Ws_SavageBlade; Atonement (Burtgang mythic) uses Ws_Atonement. Chant du Cygne and Aeolian Edge are out of era and were removed.
+Savage Blade and Knights of Round share Ws_SavageBlade; Atonement (Burtgang mythic) uses Ws_Atonement.
 Commands: /tankset /sir /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

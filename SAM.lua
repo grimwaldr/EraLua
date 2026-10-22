@@ -6,7 +6,6 @@ SAM - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Engaged: Tp_* -> Hasso (Hasso up) -> ThirdEye (Seigan + Third Eye) or Seigan (Seigan only).
 WS: ... -> Ws_<WsName> -> MeikyoShisui (Meikyo up) -> Sekkanoki (Sekkanoki up).
 Abilities use a set named after them (Meditate, ThirdEye, MeikyoShisui, WardingCircle...). Provoke uses Enmity.
-Tachi: Ageha, Stardiver and Sengikori are out of era and were removed.
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

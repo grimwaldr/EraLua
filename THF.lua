@@ -12,7 +12,6 @@ WS: Ws_Default -> Ws_<Mode> -> SA | TA | SATA -> Ws_<WsName>_SA|_TA|_SATA if it 
   e.g. Evisceration with SA up: Ws_Default, SA, Ws_Evisceration_SA (gorget only, so your SA set stays on).
 /eva puts the Eva set on top. Ranged: Midshot (status bolts: accuracy first) -> Bloody_Bolt for Bloody Bolts -> TH.
 Abilities use a set named after them: Steal, Flee, Hide, Mug, Charm.
-Nanaa's Charm was removed from Dynamis and TH: it isn't a Phoenix item.
 Commands: /th /eva /meleeset /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

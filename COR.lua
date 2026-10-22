@@ -7,7 +7,7 @@ Rolls: Roll (+ a set named after the roll on top) and a Lucky/Unlucky chat line 
 Quick Draw: QuickDraw -> QuickDraw_Acc (/meleeset Acc, and always for Light Shot / Dark Shot) -> obi when day/weather help.
 Wild Card, Fold, Random Deal, Snake Eye use sets named after them. /tpgun keeps Idle_TPgun on while idle.
 Ranged: Preshot (commented out, see the set) | Midshot -> Midshot_Acc. Movement: Blood Cuisses, else Crimson Cuisses.
-WS: Ws_SlugShot, Ws_Detonator, Ws_LeadenSalute (+ Anrin Obi when day/weather help). Triple Shot (level 87) was removed.
+WS: Ws_SlugShot, Ws_Detonator, Ws_LeadenSalute (+ Anrin Obi when day/weather help).
 Commands: /tpgun /cormsg /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 
@@ -106,7 +106,7 @@ local sets = {
     },
 
     -- Preshot is worn when /ra starts, so only Snapshot (shorter delay) matters here.
-    -- Most players didn't bother with a preshot set in era: the gains are small and few pieces exist at 75.
+    -- Most players skip a preshot set: the gains are small and few pieces exist at 75.
     -- Uncomment to use it.
     -- Preshot_Priority = {
     --     Head = 'Zhago\'s Barbut',                       -- Snapshot +3

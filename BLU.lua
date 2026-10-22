@@ -6,7 +6,7 @@ BLU - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Blue magic: BluMagical base, then by spell: BluPhysical / BluMagicAccuracy (debuffs) / BluStun / CMP (buffs) / BluSkill /
 Cure / Enmity / WhiteWind / BluDark. Chain Affinity, Burst Affinity, Diffusion up: Ca / Ba / Diffusion on top.
 TH (/th, if you add a TH set) only for Actinic Burst, Dream Flower, Subduction. Inside Salvage (Remnants): Salvage set.
-WS: Ws_SavageBlade, Ws_Expiacion (Tizona mythic). Chant du Cygne, Requiescat and Cruel Joke mode are out of era and were removed.
+WS: Ws_SavageBlade, Ws_Expiacion (Tizona mythic).
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

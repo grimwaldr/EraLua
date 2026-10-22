@@ -6,7 +6,6 @@ PUP - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in commo
 Automaton out: Idle_Pet. Automaton fighting: Pet_Only_Tp (you idle) or Tp_* (you engaged), then the /pupmode set
 (Tank / Melee / Ranger / Mage). Automaton at 950+ TP and fighting: Pet_WS (Melee) or Pet_RNGWS (Ranger). Overdrive up: Overdrive.
 Repair and Maintenance share Repair; maneuvers use Maneuver. /dt also adds Pet_Dt.
-Shijin Spiral is out of era and was removed.
 Commands: /pupmode /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 

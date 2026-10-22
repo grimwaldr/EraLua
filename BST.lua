@@ -7,7 +7,6 @@ Pet out and fighting on its own: Pet_Only_Tp. /dt also adds Pet_Dt while a pet i
 Ready moves: Ready while you use it; while the pet performs it: Ready -> PetAttack / PetMagicAttack / PetMagicAccuracy.
 Call Beast and Bestial Loyalty share Call. Reward, Charm, KillerInstinct use their own sets.
 /autofight: when you engage and your pet isn't fighting, send it in with Fight (every 3 seconds at most).
-Spur is out of era (level 83) and was removed.
 Commands: /autofight /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 
