@@ -137,12 +137,9 @@ profile.KeyBinds = {
     {'y', '/pcmd leave'},
     {'+y', '/tell Sundrix inv'},
     {'!y', '/tell Butsuon inv'},
-    {'1', '/ja "Hasso" <me>'},
+    {'1', '/ja "Sekkanoki" <me>'},
     {'2', '/ja "Berserk" <me>'},
-    {'3', '/ja "Meditate" <me>'},
-    {'4', '/ja "Third Eye" <me>'},
-    {'5', '/ja "Seigan" <me>'},
-    {'6', '/ja "Sekkanoki" <me>'},
+    -- Hasso 6, Seigan 7, Third Eye shift+7, Meditate 8 come from gcinclude (same keys on every job with SAM)
 };
 
 profile.OnDefault = function(player)

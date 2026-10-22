@@ -136,11 +136,6 @@ profile.KeyBinds = {
     {'3', '/ja "Aggressor" <me>'},
     {'4', '/ja "Defender" <me>'},
     {'5', '/ja "Tomahawk" <t>'},
-    -- /SAM (Hasso 25, Third Eye 15, Meditate 30, Seigan 35): only bound while your subjob is SAM
-    {'6', '/ja "Hasso" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'7', '/ja "Meditate" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'8', '/ja "Third Eye" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'9', '/ja "Seigan" <me>', function(p) return p.SubJob == 'SAM' end},
     -- /NIN enfeebles
     {'u', '/ma "Kurayami: Ichi" <t>'},
     {'+u', '/ma "Hojo: Ichi" <t>'},

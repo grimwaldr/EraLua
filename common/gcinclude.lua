@@ -248,6 +248,15 @@ function gcinclude.EquipShared(set)
     if next(resolved) ~= nil then gFunc.EquipSet(resolved) end
 end
 
+-- True while Main holds a two-handed weapon (great sword, great axe, scythe, polearm, great katana, staff).
+local TwoHandedSkills = T{4, 6, 7, 8, 10, 12};
+function gcinclude.TwoHanded()
+    local main = gData.GetEquipment().Main;
+    if main == nil or main.Name == nil then return false end
+    local res = AshitaCore:GetResourceManager():GetItemByName(main.Name, 0);
+    return res ~= nil and TwoHandedSkills:contains(res.Skill);
+end
+
 -- True while a fishing rod (Fishing skill item) is in the Range slot.
 function gcinclude.HoldingRod()
     local range = gData.GetEquipment().Range;
@@ -407,7 +416,19 @@ gcinclude.DefaultBinds = {
     { '+x', '/ma "Tonko: Ichi" <me>',    function(p) return p.MainJob == 'NIN' or (p.SubJob == 'NIN' and p.SubJobLevel >= 9) end },
     { 'x',  '/item "Silent Oil" <me>',   function(p) return not gcinclude.CanCastStealth(p) end },
     { '+x', '/item "Prism Powder" <me>', function(p) return not gcinclude.CanCastStealth(p) end },
+    -- SAM main or /SAM: Hasso 6, Seigan 7, Third Eye shift+7, Meditate 8 (bound once your SAM level has them).
+    { '6',  '/ja "Hasso" <me>',          function(p) return gcinclude.SamLevel(p) >= 25 end },
+    { '7',  '/ja "Seigan" <me>',         function(p) return gcinclude.SamLevel(p) >= 35 end },
+    { '+7', '/ja "Third Eye" <me>',      function(p) return gcinclude.SamLevel(p) >= 15 end },
+    { '8',  '/ja "Meditate" <me>',       function(p) return gcinclude.SamLevel(p) >= 30 end },
 };
+
+-- Your SAM level, main or sub (0 if neither).
+function gcinclude.SamLevel(p)
+    if p.MainJob == 'SAM' then return p.MainJobLevel end
+    if p.SubJob == 'SAM' then return p.SubJobLevel end
+    return 0;
+end
 
 -- WHM 20, RDM 20, SCH 20 (main or sub) have Sneak and Invisible.
 function gcinclude.CanCastStealth(p)
@@ -854,6 +875,11 @@ function gcinclude.DoAbility(profile)
         EquipModed(mapped, mode);
     else
         gcinclude.EquipLayers('', ability.Name, mode);
+    end
+    if (ability.Name == 'Hasso' or ability.Name == 'Seigan') and not gcinclude.TwoHanded() then
+        -- Both need a two-handed weapon (e.g. RNG/SAM): best Fire staff you own, HQ first.
+        local staff = gcinclude.FirstOwned(gcinclude.ElementalStaves['Fire']);
+        if staff ~= nil then gFunc.Equip('Main', staff) end
     end
     if ability.Type == 'Quick Draw' then
         gcinclude.EquipObi(string.match(ability.Name, '^(%a+)'));

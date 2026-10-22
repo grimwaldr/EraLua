@@ -97,11 +97,6 @@ profile.KeyBinds = {
     {'2', '/ja "Souleater" <me>'},
     {'3', '/ja "Weapon Bash" <t>'},
     {'4', '/ja "Berserk" <me>'},
-    -- /SAM (Hasso 25, Third Eye 15, Meditate 30, Seigan 35): only bound while your subjob is SAM
-    {'6', '/ja "Hasso" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'7', '/ja "Meditate" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'8', '/ja "Third Eye" <me>', function(p) return p.SubJob == 'SAM' end},
-    {'9', '/ja "Seigan" <me>', function(p) return p.SubJob == 'SAM' end},
     {'b', '/ma "Dread Spikes" <me>'},
 };
 

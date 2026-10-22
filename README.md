@@ -44,13 +44,16 @@ Any set ending in `_Priority` takes a list per slot, and the first item you own 
 
 ## Keybinds
 
-Every job has a `profile.KeyBinds` table of `{ key, command }` pairs (`+` shift, `^` ctrl, `!` alt, `@` win). A bind can take a condition, such as only while subbing SAM. Binds refresh when your subjob changes, and `/gckeys` lists everything bound.
+Every job has a `profile.KeyBinds` table of `{ key, command }` pairs (`+` shift, `^` ctrl, `!` alt, `@` win). A bind can take a condition, such as only while subbing NIN. Binds refresh when your subjob changes, and `/gckeys` lists everything bound.
 
 These are the same on every job:
 
 - `n` / `Shift+n`: Utsusemi: Ni / Ichi.
 - `x` / `Shift+x`: Sneak / Invisible when WHM, RDM or SCH is main or sub, otherwise Monomi / Tonko on NIN or /NIN, otherwise Silent Oil / Prism Powder.
+- `6` / `7` / `Shift+7` / `8`: Hasso / Seigan / Third Eye / Meditate on SAM or /SAM, once your SAM level has them. Hasso and Seigan put on your best Fire staff (HQ first) if you aren't holding a two-handed weapon, e.g. RNG/SAM.
 - `=` row: that job's toggles (`/meleeset`, `/dt` and so on).
+
+A job's own bind on the same key wins over these.
 
 ## Buff cancelling
 
@@ -97,7 +100,7 @@ Everything was checked against the [Phoenix server repo](https://github.com/phoe
 - **Weapon skills:** `sql/weapon_skills.sql`. Includes the quest, relic and mythic WS (Leaden Salute, Trueflight, Atonement, Expiacion).
 - **Utsusemi:** a cast only lands over shadows of the same or lower tier (`scripts/globals/spells/enhancing_ninjutsu.lua`), so only Ichi over Ni needs a cancel. Cancelling before Ni could leave you with no shadows if Ni was interrupted.
 - **Sneak / Invisible:** random 30-300s base duration plus gear bonuses (`modules/phoenix/lua/globals/spells/enhancing_spell.lua`). Skulker's Cape is the only gear with the bonus, and items ignore gear entirely, so there is no swap for oils and powders. Silent Oil does nothing while Sneak is up (`modules/era/lua/items/pot_of_silent_oil.lua`), hence the cancel.
-- **Hasso:** no gear at 75 enhances it (`modules/era/lua/globals/job_utils/samurai.lua`), so WAR and DRK get /SAM binds but no Hasso set.
+- **Hasso:** no gear at 75 enhances it (`modules/era/lua/globals/job_utils/samurai.lua`), so only SAM has a Hasso set.
 - **Song elements:** `sql/spell_list.sql`. Lullaby and Finale are Light, Elegy is Earth, and each Threnody carries its counter element (Ice Threnody is Fire), so the elemental staff lookup picks the right staff for each song.
 - **Minstrel's Ring / Earring:** `sql/item_latents.sql`. The ring needs 75% HP or less and under 100 TP when the song starts; the earring needs 25% HP or less and under 100 TP.
 
