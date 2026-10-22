@@ -107,8 +107,6 @@ local sets = {
         --Body = 'Con. Doublet +2',-- after +2
     },
 	
-    TH = {--/th will force this set to equip for 10 seconds
-	},
 	Movement = {
         Feet = 'Herald\'s Gaiters',
 	},

@@ -107,8 +107,6 @@ local sets = {
     Ring1 = 'Rajas Ring',
     Feet = 'Drachen greaves',
     },
-    TH = {--/th will force this set to equip for 10 seconds
-	},
     Movement = {
         Legs = 'Crimson Cuisses',
 	},

@@ -5,7 +5,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 BLU - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Blue magic: BluMagical base, then by spell: BluPhysical / BluMagicAccuracy (debuffs) / BluStun / CMP (buffs) / BluSkill /
 Cure / Enmity / WhiteWind / BluDark. Chain Affinity, Burst Affinity, Diffusion up: Ca / Ba / Diffusion on top.
-TH (/th, if you add a TH set) only for Actinic Burst, Dream Flower, Subduction. Inside Salvage (Remnants): Salvage set.
+Inside Salvage (Remnants): Salvage set.
 WS: Ws_SavageBlade, Ws_Expiacion (Tizona mythic).
 Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
@@ -103,8 +103,6 @@ local sets = {
     Enmity = {
     },
 
-    TH = {
-	},
     Salvage = {
 	},
 	Movement = {
@@ -148,7 +146,6 @@ local Buff = T{'Cocoon','Refueling','Feather Barrier','Memento Mori','Zephyr Man
 local Skill = T{'Metallic Body','Diamondhide','Magic Barrier','Occultation'};
 local Cures = T{'Pollen','Healing Breeze','Wild Carrot','Magic Fruit'};
 local Enmity = T{'Actinic Burst','Exuviation','Fantod','Jettatura','Temporal Shift'};
-local THSpells = T{'Actinic Burst','Dream Flower','Subduction'};
 
 profile.OnDefault = function()
     local zone = gData.GetEnvironment().Area;
@@ -172,9 +169,6 @@ profile.OnMidcast = function(spell)
     if gData.GetBuffCount('Burst Affinity') > 0 then gcinclude.EquipIfExists('Ba') end
     if gData.GetBuffCount('Diffusion') > 0 then gcinclude.EquipIfExists('Diffusion') end
 end
-
--- With /th on, only these spells get the TH set.
-profile.WantsTH = function(spell) return THSpells:contains(spell.Name) end
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;

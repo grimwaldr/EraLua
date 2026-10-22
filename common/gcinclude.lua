@@ -915,8 +915,7 @@ function gcinclude.DoMidcast(profile)
     if gcinclude.ObiSkills:contains(spell.Skill) then gcinclude.EquipObi(spell.Element) end
 
     if profile.OnMidcast ~= nil then profile.OnMidcast(spell, target, mode) end
-    if gcdisplay.GetToggle('TH') and gcinclude.OffensiveSkills:contains(spell.Skill)
-        and (profile.WantsTH == nil or profile.WantsTH(spell)) then
+    if gcdisplay.GetToggle('TH') and gcinclude.OffensiveSkills:contains(spell.Skill) then
         gcinclude.EquipIfExists('TH');
     end
 end

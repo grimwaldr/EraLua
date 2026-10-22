@@ -115,8 +115,6 @@ local sets = {
 		Legs = 'Byakko\'s Haidate',
         Feet = 'Yasha Sune-Ate',
     },
-    TH = {
-	},
     Movement = {
         Feet = 'Ninja Kyahan',
 	},

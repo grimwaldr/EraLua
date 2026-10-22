@@ -97,8 +97,6 @@ local sets = {
     Overdrive = {-- this set will force on the ability AND stay on for the duration of OD, dont change the body out because of that
     },
 
-	TH = {--/th will force this set to equip for 10 seconds
-	},
 	Movement = {
         Feet = 'Hermes\' Sandals',
 	},

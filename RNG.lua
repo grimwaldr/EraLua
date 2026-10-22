@@ -3,7 +3,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 --[[
 RNG - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
-Ranged: Preshot (commented out, see the set) | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first) -> TH.
+Ranged: Preshot (commented out, see the set) | Midshot -> Midshot_Acc (/meleeset Acc) -> Barrage (Midshot_Acc first).
 Engaged at night (18:00-06:00): Tp_Night on top of your TP set.
 WS: Ws_Default -> Ws_<Mode> -> Ws_SlugShot / Ws_Detonator / Ws_Trueflight (+ Korin Obi when day/weather help)... Ranged WS skip the distance check.
 Commands: /meleeset (Default/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay

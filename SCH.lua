@@ -102,8 +102,6 @@ local sets = {
     },
     Power = {--rapture/ebullience
 	},
-    TH = {--/th will force this set to equip for 10 seconds
-	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
