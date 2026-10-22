@@ -6,9 +6,8 @@ NIN/DRK - Phoenix XI (75 cap). Load with /lac load NINDRK (LuAshitacast only aut
 Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Enmity-focused: every ability equips Enmity; Ninjutsu, Dark and Enfeebling magic use Enmity (Utsusemi: Utsusemi on top),
 other spells use Ninjutsu. Movement_Night replaces Movement at night (18:00-06:00).
-/proc puts Tp_Proc / Ws_Proc on (Dynamis procs).
 WS: Ws_BladeJin, Ws_BladeMetsu, Ws_BladeKu.
-Commands: /proc /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
+Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 
 local sets = {
@@ -48,8 +47,6 @@ local sets = {
     },
     Tp_Acc = {
     },
-    Tp_Proc = { -- low damage, for Dynamis procs
-    },
     Precast = {
     },
     Utsusemi_Priority = {
@@ -88,8 +85,6 @@ local sets = {
     Ws_Hybrid = {
     },
     Ws_Acc = {
-    },
-    Ws_Proc = { -- low damage, for Dynamis procs
     },
     Ws_BladeJin = {
     },
@@ -144,7 +139,6 @@ profile.Packer = {
 
 profile.KeyBinds = {
     {'=', '/lac fwd meleeset'},
-    {'+=', '/lac fwd proc'},
     {'^=', '/lac fwd dt'},
     {'y', '/pcmd leave'},
     {'q', '/ws "Blade: Jin" <t>'},
@@ -164,19 +158,11 @@ profile.AbilityBase = 'Enmity';
 
 local EnmitySkills = T{'Ninjutsu', 'Dark Magic', 'Enfeebling Magic'};
 
-profile.OnDefault = function(player)
-    if player.Status == 'Engaged' and gcdisplay.GetToggle('PROC') then gcinclude.EquipIfExists('Tp_Proc') end
-end
-
 profile.OnMidcast = function(spell)
     if EnmitySkills:contains(spell.Skill) then
         gcinclude.EquipIfExists('Enmity');
         if string.find(spell.Name, 'Utsusemi') then gcinclude.EquipIfExists('Utsusemi') end
     end
-end
-
-profile.OnWeaponskill = function()
-    if gcdisplay.GetToggle('PROC') then gcinclude.EquipIfExists('Ws_Proc') end
 end
 
 profile.OnLoad = function()
@@ -186,7 +172,6 @@ profile.OnLoad = function()
         Settings = { CancelDelay = { ['Utsusemi: Ichi'] = 2.4 } },
         MacroBook = 8, MacroSet = 1,
     });
-    gcinclude.AddToggle('PROC', false, 'proc', 'Proc Mode');
     gcinclude.BindKeys(profile.KeyBinds);
 end
 
