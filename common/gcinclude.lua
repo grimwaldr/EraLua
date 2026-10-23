@@ -520,16 +520,12 @@ end
 
 --[[
 Runs at the end of every idle/TP update (gcinclude.DoDefault calls it).
-Order: auto regen/refresh/DT, DT toggle, movement, town and aketon, debuff sets,
-craft/fish/HELM/reraise toggles, locking rings.
+Order: auto regen/refresh/DT, movement, town and aketon, then forced sets that win over town:
+DT toggle, debuff sets, craft/fish/HELM/reraise toggles, locking rings.
 ]]
 function gcinclude.CheckDefault()
     local player = gData.GetPlayer();
     gcinclude.SetRegenRefreshGear();
-    if gcdisplay.GetToggle('DTset') then
-        gcinclude.EquipIfExists('Dt');
-        if gData.GetPet() ~= nil then gcinclude.EquipIfExists('Pet_Dt') end
-    end
     -- Moving means you want move speed, engaged or not (chasing, kiting, repositioning). Your TP gear comes back when you stop.
     if gcinclude.settings.AutoMovement and player.IsMoving then
         -- Movement_Night (e.g. Ninja Kyahan) is used instead of Movement from 18:00 to 06:00 if you have one
@@ -538,6 +534,11 @@ function gcinclude.CheckDefault()
         if not (night and gcinclude.EquipIfExists('Movement_Night')) then gcinclude.EquipIfExists('Movement') end
     end
     if player.Status ~= 'Engaged' then gcinclude.SetTownGear() end
+    -- Forced sets (/dt, then craft/HELM/fish/reraise) win over town gear.
+    if gcdisplay.GetToggle('DTset') then
+        gcinclude.EquipIfExists('Dt');
+        if gData.GetPet() ~= nil then gcinclude.EquipIfExists('Pet_Dt') end
+    end
     gcinclude.CheckCommonDebuffs();
     if gcinclude.CraftSet then gcinclude.EquipShared(gcinclude.sets.Crafting) end
     if gcinclude.HelmSet then gcinclude.EquipShared(gcinclude.sets.Helm) end
@@ -726,7 +727,7 @@ general to specific; any set that doesn't exist (or is empty) is skipped. <Mode>
 MeleeSet value (TP/WS/abilities/ranged) or NukeSet value (spells), skipped when on Default/Power.
 
   Idle/TP:   Idle -> Idle_Pet (pet out) -> Tp_Default -> Tp_<Mode> -> TH (/th)    | Resting | Pet_Only_Tp -> Pet_Only_Tp_<Mode>
-             -> profile.OnDefault -> Dt (/dt) -> Movement (while moving) -> Town/aketon -> ...
+             -> profile.OnDefault -> Movement (while moving) -> Town/aketon -> Dt (/dt) -> ...
   Ability:   Enmity (Provoke etc.) -> set by type (Roll, QuickDraw, Ready, BP) -> <LastWord> -> <Family> -> <Exact>  (each + _<Mode>)
              e.g. Curing Waltz III -> Waltz, CuringWaltz, CuringWaltzIII; Super Jump -> Jump, SuperJump
   Precast:   Precast -> <Skill>_Precast (Cure_, Enhancing_, Song_ ...) -> <Family>_Precast (Stoneskin_Precast)

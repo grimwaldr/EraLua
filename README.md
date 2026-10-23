@@ -27,7 +27,7 @@ Sets are looked up by name. A missing or empty set is skipped, so a job file onl
 
 | Action | Order (later overwrites earlier) |
 | --- | --- |
-| Idle / TP | `Idle` -> `Idle_Pet` -> `Tp_Default` -> `Tp_<Mode>` -> `TH` -> job hook -> `Idle_Regen` / `Dt` (AutoGear) -> `Dt` (/dt) -> `Movement` while moving (`Movement_Night` at night) -> `Town` / aketon -> final job hook |
+| Idle / TP | `Idle` -> `Idle_Pet` -> `Tp_Default` -> `Tp_<Mode>` -> `TH` -> job hook -> `Idle_Regen` / `Dt` (AutoGear) -> `Movement` while moving (`Movement_Night` at night) -> `Town` / aketon -> `Dt` (/dt) -> `/craftset` `/helmset` `/fishset` `/rrset` -> final job hook |
 | Ability | `Enmity` (Provoke, Animated Flourish) -> by type (`Roll`, `QuickDraw`, `Ready`, `BP`) -> last word -> family -> exact name, each + `_<Mode>` |
 | Precast | `Precast` -> `<Skill>_Precast` -> `<Spell>_Precast` |
 | Midcast | `<Skill>` -> `<Skill>_<Mode>` -> `Self_<Skill>` -> `Haste` (Utsusemi, Blink, Aquaveil) -> last word -> family -> exact -> `Self_<Spell>` -> staff / obi -> job hook -> `TH` |
