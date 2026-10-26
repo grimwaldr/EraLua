@@ -241,7 +241,7 @@ profile.KeyBinds = {
     {'+1', '/ws "Slug Shot" <t>'},
     {'+2', '/ws "Detonator" <t>'},
     {'+3', '/ws "Leaden Salute" <t>'},
-    {'+4', '/ra <t>'},
+    {'g', '/ra <t>'},
 };
 
 profile.OnDefault = function(player)
