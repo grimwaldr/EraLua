@@ -238,7 +238,7 @@ profile.KeyBinds = {
     {'4', '/ja "Evoker\'s Roll" <me>'},
     {'5', '/ja "Wizard\'s Roll" <me>'},
     {'6', '/ja "Corsair\'s Roll" <me>'},
-    {'+1', '/ws "Slug Shot" <t>'},
+    {'+g', '/ws "Slug Shot" <t>'},
     {'+2', '/ws "Detonator" <t>'},
     {'+3', '/ws "Leaden Salute" <t>'},
     {'g', '/ra <t>'},
