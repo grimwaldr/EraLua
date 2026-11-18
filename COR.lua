@@ -221,6 +221,7 @@ profile.KeyBinds = {
     {'^=', '/lac fwd dt'},
     {'e', '/ja "Light Shot" <t>'},
     {'+e', '/ja "Dark Shot" <t>'},
+    {'!e', '/ja "Ice Shot" <t>'},
     {'q', '/ja "Double-Up" <me>'},
     {'+q', '/ja "Snake Eye" <me>'},
     {'t', '/ma "Cure III" <stpc>'},
