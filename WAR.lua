@@ -136,6 +136,7 @@ profile.KeyBinds = {
     {'3', '/ja "Aggressor" <me>'},
     {'4', '/ja "Defender" <me>'},
     {'5', '/ja "Tomahawk" <t>'},
+    {'g', '/ra <t>'},
     -- /NIN enfeebles
     {'u', '/ma "Kurayami: Ichi" <t>'},
     {'+u', '/ma "Hojo: Ichi" <t>'},
