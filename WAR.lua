@@ -5,7 +5,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 WAR - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Abilities use a set named after them (Berserk, Warcry, Aggressor, Defender, Tomahawk).
 WS sets: Ws_Default -> Ws_<Mode> -> Ws_<WsName> -> Ws_<WsName>_<Mode>.
-Commands: /meleeset (Default/Hybrid/Acc) /dt /setcycle /wsdistance /gckeys /gcdisplay
+Commands: /meleeset (Default/Hybrid/Acc) /dt /bolt (Blind/Acid: shoot with that bolt) /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 
 local sets = {
@@ -136,13 +136,29 @@ profile.KeyBinds = {
     {'3', '/ja "Aggressor" <me>'},
     {'4', '/ja "Defender" <me>'},
     {'5', '/ja "Tomahawk" <t>'},
-    {'g', '/ra <t>'},
+    {'g', '/lac fwd bolt Blind'},
+    {'+g', '/lac fwd bolt Acid'},
     -- /NIN enfeebles
     {'u', '/ma "Kurayami: Ichi" <t>'},
     {'+u', '/ma "Hojo: Ichi" <t>'},
     {'^u', '/ma "Jubaku: Ichi" <t>'},
     {'!u', '/ma "Dokumori: Ichi" <t>'},
 };
+
+-- /bolt Blind|Acid: shoot (/ra <t>) with that bolt. It goes on for the shot; idle/TP sets put the normal ammo back after.
+local shotAmmo, shotId = nil, 0;
+profile.OnCommand = function(args)
+    if args[1] == 'bolt' and args[2] ~= nil then
+        shotAmmo = args[2] .. ' Bolt';
+        shotId = shotId + 1;
+        local id = shotId;
+        AshitaCore:GetChatManager():QueueCommand(1, '/ra <t>');
+        -- Forget the bolt if the shot never went off (out of range, no target).
+        (function() if shotId == id then shotAmmo = nil end end):once(5);
+    end
+end
+profile.OnPreshot = function() if shotAmmo then gFunc.Equip('Ammo', shotAmmo) end end
+profile.OnMidshot = function() if shotAmmo then gFunc.Equip('Ammo', shotAmmo) end end
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
