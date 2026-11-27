@@ -138,10 +138,6 @@ profile.KeyBinds = {
     {'5', '/ja "Tomahawk" <t>'},
     {'g', '/lac fwd bolt Blind'},
     {'+g', '/lac fwd bolt Acid'},
-    {'^g', '/lac fwd bolt Sleep'},
-    {'!g', '/lac fwd bolt Holy'},
-    {'h', '/lac fwd bolt Bloody'},
-    {'+h', '/lac fwd bolt Venom'},
     -- /NIN enfeebles
     {'u', '/ma "Kurayami: Ichi" <t>'},
     {'+u', '/ma "Hojo: Ichi" <t>'},
