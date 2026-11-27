@@ -5,7 +5,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 WAR - Phoenix XI (75 cap). Set order and naming: "Generic job handlers" in common/gcinclude.lua.
 Abilities use a set named after them (Berserk, Warcry, Aggressor, Defender, Tomahawk).
 WS sets: Ws_Default -> Ws_<Mode> -> Ws_<WsName> -> Ws_<WsName>_<Mode>.
-Commands: /meleeset (Default/Hybrid/Acc) /dt /bolt (Blind/Acid: shoot with that bolt) /setcycle /wsdistance /gckeys /gcdisplay
+Commands: /meleeset (Default/Hybrid/Acc) /dt /bolt (Blind/Acid/Sleep/Holy/Bloody/Venom: shoot with that bolt) /setcycle /wsdistance /gckeys /gcdisplay
 ]]
 
 local sets = {
@@ -138,6 +138,10 @@ profile.KeyBinds = {
     {'5', '/ja "Tomahawk" <t>'},
     {'g', '/lac fwd bolt Blind'},
     {'+g', '/lac fwd bolt Acid'},
+    {'^g', '/lac fwd bolt Sleep'},
+    {'!g', '/lac fwd bolt Holy'},
+    {'h', '/lac fwd bolt Bloody'},
+    {'+h', '/lac fwd bolt Venom'},
     -- /NIN enfeebles
     {'u', '/ma "Kurayami: Ichi" <t>'},
     {'+u', '/ma "Hojo: Ichi" <t>'},
@@ -145,7 +149,7 @@ profile.KeyBinds = {
     {'!u', '/ma "Dokumori: Ichi" <t>'},
 };
 
--- /bolt Blind|Acid: shoot (/ra <t>) with that bolt. It goes on for the shot; idle/TP sets put the normal ammo back after.
+-- /bolt Blind|Acid|Sleep|Holy|Bloody|Venom: shoot (/ra <t>) with that bolt. It goes on for the shot; idle/TP sets put the normal ammo back after.
 local shotAmmo, shotId = nil, 0;
 profile.OnCommand = function(args)
     if args[1] == 'bolt' and args[2] ~= nil then
